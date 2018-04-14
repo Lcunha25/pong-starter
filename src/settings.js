@@ -11,5 +11,5 @@ export const KEYS = {
   export const PADDLEWIDTH = 8;
   export const PADDLEHEIGHT = 56;
   export const BOARDGAP = 10;
-  export const PADDLESPEED = 15;
+  export const PADDLESPEED = 5;
   export const RADIUS = 8;

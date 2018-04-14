@@ -3,6 +3,7 @@ import Board from './Board';
 import Paddle from './Paddle';
 import Ball from './Ball'
 import Score from './Score.js';
+import Keypush from './Keypush.js';
 
 export default class Game {
 
@@ -44,7 +45,7 @@ export default class Game {
 		)
 		this.score1 = new Score(300, 50, 30);
 		this.score2 = new Score(200, 50, 30);
-
+		this.keypush = new Keypush();
 		document.addEventListener('keydown', event => {
 			if (event.key === KEYS.pause){
 				this.pause = !this.pause;
@@ -65,8 +66,8 @@ export default class Game {
 		this.gameElement.appendChild(svg);
 
 		this.Board.render(svg);
-		this.paddle.render(svg);
-		this.paddle2.render(svg);
+		this.paddle.render(svg, this.keypush);
+		this.paddle2.render(svg, this.keypush);
 		this.Ball.render(svg, this.paddle, this.paddle2);
 		this.score1.render(svg, this.paddle.getScore());
 		this.score2.render(svg, this.paddle2.getScore());
