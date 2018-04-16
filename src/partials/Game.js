@@ -105,6 +105,8 @@ export default class Game {
 				this.paddle2.resetScore();
 				this.paddle.height = 56;
 				this.paddle2.height = 56;
+				this.paddle.y = ((this.height - this.paddleHeight)/ 2);
+				this.paddle2.y = ((this.height - this.paddleHeight)/ 2);
 			}, 1500);
 		}
 		this.score1.render(svg, this.paddle.getScore());
