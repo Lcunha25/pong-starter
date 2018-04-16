@@ -12,6 +12,11 @@ export default class Paddle {
       this.upButton = up; 
       this.downButton = down;
     }
+    
+    resetScore() {
+      this.score = 0;
+    }
+
     getScore(){
       return this.score;
     }

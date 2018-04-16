@@ -4,6 +4,7 @@ import Paddle from './Paddle';
 import Ball from './Ball'
 import Score from './Score.js';
 import Keypush from './Keypush.js';
+import DoYouKnowTheWay from './DoYouKnowTheWay.js'
 
 export default class Game {
 
@@ -16,6 +17,8 @@ export default class Game {
 		this.boardGap = BOARDGAP;
 		this.radius = RADIUS;
 		this.pause = false;
+		this.ping = new Audio('public/sounds/pong-05.wav');
+
 	
 		this.gameElement = document.getElementById(this.element);
 		this.Board = new Board(this.width, this.height);
@@ -43,6 +46,16 @@ export default class Game {
 			this.width,
 			this.height
 		)
+		this.Ball2 = new Ball(
+			this.radius = 5,
+			this.width,
+			this.height
+		)
+		this.Ball3 = new Ball(
+			this.radius = 12,
+			this.width,
+			this.height
+		)
 		this.score1 = new Score(300, 50, 30);
 		this.score2 = new Score(200, 50, 30);
 		this.keypush = new Keypush();
@@ -51,6 +64,8 @@ export default class Game {
 				this.pause = !this.pause;
 			}
 		});
+		this.IMG = new DoYouKnowTheWay(		
+		);
 	}
 
 	render() {
@@ -67,8 +82,31 @@ export default class Game {
 
 		this.Board.render(svg);
 		this.paddle.render(svg, this.keypush);
+		if (this.paddle2.getScore() > 5) {
+			this.paddle.height = 26;
+		}
 		this.paddle2.render(svg, this.keypush);
+		if (this.paddle.getScore() > 5) {
+			this.paddle2.height = 26;
+		}
 		this.Ball.render(svg, this.paddle, this.paddle2);
+		if (this.paddle.getScore() > 2 || this.paddle2.getScore() > 2) {
+			this.Ball2.render(svg, this.paddle, this.paddle2);
+		}
+		if (this.paddle.getScore() > 4 || this.paddle2.getScore() > 4) {
+			this.Ball3.render(svg, this.paddle, this.paddle2);
+		}
+		if (this.paddle.getScore() > 8 || this.paddle2.getScore() > 8) {
+			this.IMG.render();
+			this.ping.play();
+			this.pause = true;
+			setTimeout(() => {
+				this.paddle.resetScore();
+				this.paddle2.resetScore();
+				this.paddle.height = 56;
+				this.paddle2.height = 56;
+			}, 1500);
+		}
 		this.score1.render(svg, this.paddle.getScore());
 		this.score2.render(svg, this.paddle2.getScore());
 	}
