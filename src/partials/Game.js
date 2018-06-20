@@ -31,7 +31,7 @@ export default class Game {
 			((this.height - this.paddleHeight)/ 2),
 			KEYS.p1up,
 			KEYS.p1down
-	);
+		);
 		this.paddle2 =  new Paddle(
 			this.height, 
 			this.paddleWidth, 
@@ -40,22 +40,22 @@ export default class Game {
 			((this.height - this.paddleHeight)/ 2),
 			KEYS.p2up,
 			KEYS.p2down
-	);
+		);
 		this.Ball = new Ball(
 			RADIUS,
 			this.width,
 			this.height
-		)
+		);
 		this.Ball2 = new Ball(
 			this.radius = 5,
 			this.width,
 			this.height
-		)
+		);
 		this.Ball3 = new Ball(
 			this.radius = 12,
 			this.width,
 			this.height
-		)
+		);
 		this.score1 = new Score(300, 50, 30);
 		this.score2 = new Score(200, 50, 30);
 		this.keypush = new Keypush();
@@ -90,14 +90,29 @@ export default class Game {
 			this.paddle2.height = 26;
 		}
 		this.Ball.render(svg, this.paddle, this.paddle2);
-		if (this.paddle.getScore() > 2 || this.paddle2.getScore() > 2) {
+		if (this.paddle.getScore() > 0 || this.paddle2.getScore() > 0) {
 			this.Ball2.render(svg, this.paddle, this.paddle2);
 		}
 		if (this.paddle.getScore() > 4 || this.paddle2.getScore() > 4) {
 			this.Ball3.render(svg, this.paddle, this.paddle2);
 		}
 		if (this.paddle.getScore() > 8 || this.paddle2.getScore() > 8) {
-			this.IMG.render();
+			if (this.paddle.getScore() > 8){
+				this.IMG.render();
+				var winner = document.getElementById('game'),
+				winnerChild = document.createElement('p');
+				winnerChild.setAttribute('class', 'player-1-wins');
+				winnerChild.innerHTML = 'Player one wins!!!';
+				winner.appendChild(winnerChild);
+			}
+			if (this.paddle2.getScore() > 8){
+				this.IMG.render();
+				var winner2 = document.getElementById('game'),
+				winnerChild2 = document.createElement('p');
+				winnerChild2.setAttribute('class', 'player-2-wins');
+				winnerChild2.innerHTML = 'Player two wins!!!';
+				winner2.appendChild(winnerChild2);
+			}
 			this.ping.play();
 			this.pause = true;
 			setTimeout(() => {

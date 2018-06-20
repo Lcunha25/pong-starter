@@ -80,11 +80,32 @@ body {
 }
 
 h1 {
+  width: 518px;
   font-size: 2.5rem;
-  margin-bottom: 1rem; 
+  margin-bottom: 1rem;
   text-align: center;
 }
 svg {
   border: solid;
   background-color: #353535;
+}
+.p-wrapper{
+  display: grid;
+  grid-template-columns: 259px 259px;
+}
+.p2 {
+  text-align: end;
+}
+img {
+  height: 262px;
+}
+.player-1-wins{
+  font-size: 42px;
+  text-align: center;
+  margin: 10px 0;
+}
+.player-2-wins{
+  font-size: 42px;
+  text-align: center;
+  margin: 10px 0;
 }
