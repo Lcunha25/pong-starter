@@ -1,4 +1,4 @@
-![](public/images/game-won.png)
+![](public/images/game-starting.png)
 # Pong Game
 
 A basic pong game using SVGs. TO sucessfully see the game with all correct positions please clone the repo, and open the game with webpack.
