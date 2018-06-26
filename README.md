@@ -3,10 +3,10 @@
 
 A basic pong game using SVGs. TO sucessfully see the game with all correct positions please clone the repo, and open the game with webpack.
 
-# Pong after someone scores a goal:
+### Pong after one of the scores more than 4 goals:
 ![](public/images/game-aftergoal.png)
 
-# Pong after we have a winner.
+### Pong whenone of the players have won. After scoring more than 8 points.
 ![](public/images/game-won.png)
 
 ## Setup
